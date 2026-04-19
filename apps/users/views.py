@@ -29,12 +29,15 @@ class LoginView(APIView):
             })
         return Response(serializer.errors, status=400)
     # users/views.py
-
 class ProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        user = request.user
         return Response({
-            "username": request.user.username,
-            "email": request.user.email,
+            "username": user.username,
+            "email": user.email,
+            "points": getattr(user, "points", 0),
+            "co2": getattr(user, "co2", 0),
+            "waste": getattr(user, "waste", 0),
         })
