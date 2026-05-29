@@ -10,5 +10,7 @@ def home(request):
 urlpatterns = [
     path('', home),                    # ✅ root check
     path('admin/', admin.site.urls),  # ✅ admin
-    path('api/', include('api.urls')) # ✅ all APIs routed here
+    path('api/', include('api.urls')), # ✅ all APIs routed here
+    
+
 ]
